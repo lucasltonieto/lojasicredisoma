@@ -1,6 +1,13 @@
-from app import app
-from vercel_wsgi import handle
+from flask import Flask
+from vercel_wsgi import handle_request
 
-# Ponto de entrada executado pelo Vercel
+app = Flask(__name__)
+
+@app.route('/')
+def hello():
+    return 'Hello World!'
+
+# Adicione suas outras rotas aqui
+
 def handler(request, context):
-    return handle(app, request, context)
+    return handle_request(app, request)

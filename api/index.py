@@ -4,7 +4,7 @@ from vercel_wsgi import handle_request
 app = Flask(__name__)
 
 @app.route('/')
-def hello():
+def home():
     return 'Hello World!'
 
 # Adicione suas outras rotas aqui

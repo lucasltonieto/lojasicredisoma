@@ -1,10 +1,13 @@
 import uuid
 import re
+import os
 from urllib.parse import unquote, quote
 from flask import Flask, request, redirect, render_template, make_response, url_for
 from vercel_wsgi import handle_request
 
-app = Flask(__name__)
+# Configure Flask to find templates in the correct location for Vercel deployment
+template_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'templates'))
+app = Flask(__name__, template_folder=template_dir)
 
 CATALOGO = {
     "89": {"nome": "Prato", "preco": 95.90},
